@@ -1,0 +1,6 @@
+https://developer.nvidia.com/cuda-downloads
+https://developer.nvidia.com/cudnn
+
+https://stackoverflow.com/questions/43703088/cuda-install-error-on-ubuntu-17-04
+https://devtalk.nvidia.com/default/topic/983777/can-t-locate-installutils-pm-in-inc/
+https://medium.com/@at15/install-nvidia-cuda-on-ubuntu-17-04-823300ab7bcc
