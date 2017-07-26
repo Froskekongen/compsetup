@@ -3,10 +3,13 @@ apt-get install -y --no-install-recommends \
   curl
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-add-apt-repository \
+add-apt-repository -y \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
+
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java
 
 gccver=$(gcc -dumpversion)
 gccmainver=$(echo $gccver | head -c 1)
@@ -25,8 +28,17 @@ apt-get update && apt-get install -y --no-install-recommends \
   linux-headers-$(uname -r) \
   linux-image-extra-virtual \
   linux-image-extra-$(uname -r) \
-  docker-ce
+  docker-ce \
+  oracle-java8-installer
 
 groupadd docker
 systemctl enable docker
 # usermod -aG docker $USER
+
+LINE="export JAVA_HOME=/usr/lib/jvm/java-8-oracle"
+ba=/etc/profile.d/java_env.sh
+if [ -e $ba ]; then
+  grep -q "$LINE" "$ba" || echo "$LINE" >> "$ba"
+else
+  echo "$LINE" >> "$ba"
+fi
