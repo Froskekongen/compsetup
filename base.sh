@@ -18,6 +18,7 @@ gccmainver=$(echo $gccver | head -c 1)
 
 apt-get update && apt-get install -y --no-install-recommends \
   libpython3-dev \
+  python3-dev \
   wget \
   libstdc++-${gccmainver}-dev \
   dvipng \
@@ -39,10 +40,6 @@ apt-get update && apt-get install -y --no-install-recommends \
 groupadd docker
 systemctl enable docker
 # usermod -aG docker $USER
-
-
-
-
 
 
 LINE="export JAVA_HOME=/usr/lib/jvm/java-8-oracle"

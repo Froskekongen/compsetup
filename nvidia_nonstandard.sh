@@ -38,19 +38,22 @@ sed -i "/${LINE3}/ { c \
 //${LINE3}
 }" ${file1}
 
+tar xvfz cudnn-8.0-linux-x64-v6.0.tgz
+cp -r cuda/* /usr/local/cuda-8.0
 
+echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/cuda.conf && \
+    ldconfig
 
+## Not sure which option is best
 echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
 curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
 apt-get update && apt-get install -y --no-install-recommends bazel
 
-
-## Not sure which option is best
 #wget 'https://github.com/bazelbuild/bazel/releases/download/0.5.2/bazel-0.5.2-installer-linux-x86_64.sh'
 #chmod +x bazel-0.5.2-installer-linux-x86_64.sh
 #./bazel-0.5.2-installer-linux-x86_64.sh
 
-EXTRA_NVCCFLAGS="-Xcompiler -std=c++98"
+EXTRA_NVCCFLAGS="-Xcompiler -std=c++98 -D__CORRECT_ISO_CPP11_MATH_H_PROTO"
 
 cd /home/${user}
 git clone https://github.com/tensorflow/tensorflow.git
