@@ -16,5 +16,6 @@ pip3 install -U pip \
   ipython \
   pillow \
   matplotlib \
-  tensorflow_gpu
+  tensorflow_gpu \
+  google-cloud
 pip3 install -U git+https://github.com/fchollet/keras.git
