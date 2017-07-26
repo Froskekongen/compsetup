@@ -1,5 +1,20 @@
 #!/bin/bash
-## Assumes access to runfile installation of cuda toolkit
+## Assumes access to runfile installation of cuda toolkit and cudnn tarfile
+
+
+runfiledir=$1
+runfilename=$2
+user=$3
+cd $runfiledir
+chmod +x ${runfilename}
+
+./${runfilename} --tar mxvf
+
+cp InstallUtils.pm /usr/lib/x86_64-linux-gnu/perl-base
+
+./${runfilename} --override --silent --toolkit
+
+ln -s /usr/local/cuda-8.0 /usr/local/cuda
 
 
 LINE1="#if __GNUC__ > 5"

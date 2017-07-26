@@ -29,7 +29,8 @@ apt-get update && apt-get install -y --no-install-recommends \
   linux-image-extra-virtual \
   linux-image-extra-$(uname -r) \
   docker-ce \
-  oracle-java8-installer
+  oracle-java8-installer \
+  git
 
 groupadd docker
 systemctl enable docker
