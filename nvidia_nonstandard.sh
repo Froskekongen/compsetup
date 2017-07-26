@@ -22,8 +22,8 @@ LINE2="#error -- unsupported GNU version! gcc versions later than 5 are not supp
 LINE3="#endif \/\* __GNUC__ > 5 \*\/"
 
 
-#file1="/usr/local/cuda-8.0/include/host_config.h"
-file1="host_config.h"
+file1="/usr/local/cuda-8.0/include/host_config.h"
+#file1="host_config.h"
 
 
 sed -i "/${LINE1}/ { c \
@@ -39,4 +39,19 @@ sed -i "/${LINE3}/ { c \
 }" ${file1}
 
 
+
+echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
+curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+apt-get update && apt-get install -y --no-install-recommends bazel
+
+
+## Not sure which option is best
+#wget 'https://github.com/bazelbuild/bazel/releases/download/0.5.2/bazel-0.5.2-installer-linux-x86_64.sh'
+#chmod +x bazel-0.5.2-installer-linux-x86_64.sh
+#./bazel-0.5.2-installer-linux-x86_64.sh
+
 EXTRA_NVCCFLAGS="-Xcompiler -std=c++98"
+
+cd /home/${user}
+git clone https://github.com/tensorflow/tensorflow.git
+cd tensorflow

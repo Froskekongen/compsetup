@@ -11,6 +11,8 @@ add-apt-repository -y \
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   add-apt-repository -y ppa:webupd8team/java
 
+
+
 gccver=$(gcc -dumpversion)
 gccmainver=$(echo $gccver | head -c 1)
 
@@ -30,11 +32,18 @@ apt-get update && apt-get install -y --no-install-recommends \
   linux-image-extra-$(uname -r) \
   docker-ce \
   oracle-java8-installer \
-  git
+  git \
+  zip \
+  pkg-config
 
 groupadd docker
 systemctl enable docker
 # usermod -aG docker $USER
+
+
+
+
+
 
 LINE="export JAVA_HOME=/usr/lib/jvm/java-8-oracle"
 ba=/etc/profile.d/java_env.sh
