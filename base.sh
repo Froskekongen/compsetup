@@ -1,3 +1,4 @@
+#!/bin/bash
 apt-get install -y --no-install-recommends \
   gcc \
   curl
@@ -10,6 +11,9 @@ add-apt-repository -y \
 
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
   add-apt-repository -y ppa:webupd8team/java
+
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 
 
 
@@ -35,7 +39,9 @@ apt-get update && apt-get install -y --no-install-recommends \
   oracle-java8-installer \
   git \
   zip \
-  pkg-config
+  pkg-config \
+  google-chrome-stable && \
+  rm -rf /var/cache/oracle-jdk8-installer
 
 groupadd docker
 systemctl enable docker
