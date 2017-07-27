@@ -13,12 +13,13 @@ RUN apt-get update && apt-get install --no-install-recommends -y  \
   ghostscript \
   graphviz \
   git \
+  libxft-dev \
+  python3-tk \
   oracle-java8-installer && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /var/cache/oracle-jdk8-installer
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 
 RUN pip install -U --no-cache-dir pip \
@@ -32,6 +33,9 @@ RUN pip install -U --no-cache-dir pip \
   pillow \
   matplotlib
 RUN pip install -U --no-cache-dir git+https://github.com/fchollet/keras.git
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+
 
 
 RUN mkdir -p /repos/data

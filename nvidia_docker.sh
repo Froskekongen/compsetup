@@ -36,7 +36,7 @@ LINE2="alias pythondockerjupyter='nvidia-docker run \
   -e REPODIR=${dockerrepodir} \
   -w=${dockerrepodir} \
   --rm=true \
-erlenda/dlcompute:latest'"
+  erlenda/dlcompute:latest'"
 if [ -e $ba ]; then
   grep -q "$LINE2" "$ba" || echo "$LINE2" >> "$ba"
 else
