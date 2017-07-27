@@ -32,6 +32,8 @@ apt-get update && apt-get install -y --no-install-recommends \
   zlib1g-dev \
   build-essential \
   unzip \
+  libcupti-dev \
+  libibverbs-dev \
   linux-headers-$(uname -r) \
   linux-image-extra-virtual \
   linux-image-extra-$(uname -r) \
@@ -40,6 +42,7 @@ apt-get update && apt-get install -y --no-install-recommends \
   git \
   zip \
   pkg-config \
+  python3-tk \
   google-chrome-stable && \
   rm -rf /var/cache/oracle-jdk8-installer
 
