@@ -30,6 +30,7 @@ pip install -U pip \
   pillow \
   matplotlib \
   tensorflow_gpu \
+  h5py \
   google-cloud
 pip install -U git+https://github.com/fchollet/keras.git
 

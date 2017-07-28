@@ -42,6 +42,7 @@ apt-get update && apt-get install -y --no-install-recommends \
   git \
   zip \
   pkg-config \
+  libhdf5-dev \
   python3-tk \
   google-chrome-stable && \
   rm -rf /var/cache/oracle-jdk8-installer
