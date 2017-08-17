@@ -59,3 +59,6 @@ if [ -e $ba ]; then
 else
   echo "$LINE" >> "$ba"
 fi
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
