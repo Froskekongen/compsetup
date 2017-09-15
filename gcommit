@@ -8,6 +8,7 @@ if [ -z "$2" ]
 else
   mergetxt=$2
 fi
+echo $mergetxt
 
 git add $files
-git commit -m $mergetxt
+git commit -m "${mergetxt}"
