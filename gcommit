@@ -1,0 +1,13 @@
+#!/bin/bash
+
+files=$1
+echo $files
+if [ -z "$2" ]
+  then
+    mergetxt="Updated files"
+else
+  mergetxt=$2
+fi
+
+git add $files
+git commit -m $mergetxt
