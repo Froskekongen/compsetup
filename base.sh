@@ -1,4 +1,6 @@
 #!/bin/bash
+user=$1
+homefolder=/home/${user}
 apt-get install -y --no-install-recommends \
   gcc \
   curl
@@ -60,5 +62,9 @@ else
   echo "$LINE" >> "$ba"
 fi
 
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+cd ${homefolder}
+sudo -H -u ${user} -c "mkdir ${homefolder}/bin"
+sudo -H -u ${user} -c "cp gcom ${homefolder}/bin/gcom"
+
+sudo -H -u ${user} -c "git clone --depth 1 https://github.com/junegunn/fzf.git ${homefolder}/.fzf"
+sudo -H -u ${user} -c "${homefolder}/.fzf/install"
