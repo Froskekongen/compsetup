@@ -30,7 +30,8 @@ pip install -U pip \
   pillow \
   matplotlib \
   h5py \
-  google-cloud
+  google-cloud \
+  autopep8
 #pip install -U git+https://github.com/fchollet/keras.git
 
 chown -R ${username}:${username} ${venvpath}
