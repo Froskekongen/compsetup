@@ -23,8 +23,6 @@ gccver=$(gcc -dumpversion)
 gccmainver=$(echo $gccver | head -c 1)
 
 apt-get update && apt-get install -y --no-install-recommends \
-  libpython3-dev \
-  python3-dev \
   wget \
   libstdc++-${gccmainver}-dev \
   dvipng \
@@ -45,7 +43,6 @@ apt-get update && apt-get install -y --no-install-recommends \
   zip \
   pkg-config \
   libhdf5-dev \
-  python3-tk \
   google-chrome-stable && \
   rm -rf /var/cache/oracle-jdk8-installer
 
